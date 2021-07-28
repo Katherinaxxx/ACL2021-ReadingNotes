@@ -1,10 +1,30 @@
-# ACL2021-ReadingNotes
-ACL2021 long paper 阅读笔记
+# ReadingNotes
+ACL2021 & NAACL2021 paper 阅读笔记
+
 持续更新
 [TOC]
 
 ## intent detect
-[GL-GIN: Fast and Accurate Non-Autoregressive Model for Joint Multiple Intent Detection and Slot Filling](https://aclanthology.org/2021.acl-long.15.pdf)
+
+GL-GIN: Fast and Accurate Non-Autoregressive Model for Joint Multiple Intent Detection and Slot Filling [[paper](https://aclanthology.org/2021.acl-long.15.pdf)][[code](https://github.com/yizhen20133868/GL-GIN)]
+
+* problem
+用非自回归模型（self attention、GAT等）加速意图识别和抽槽的推理速度
+* method
+提出全局局部图形交互网络（GL-GIN），其中主要的组成部分有local slot-aware graph interaction layer和global intent- slot graph interaction layer，前者学习槽之间的关系，后者学习意图和槽的交互关系
+![]("fig/GL-GIN.jpg")
+* conclusion
+GL-GIN与论文中的baseline比较，可以达到SOTA的效果，且推理速度快了11倍
+
+
+Supervised Neural Clustering via Latent Structured Output Learning: Application to Question Intents [[paper](https://aclanthology.org/2021.naacl-main.263.pdf)][code]
+* problem
+自动识别意图
+* method
+聚类+结构化 优化方程
+* conclusion & thoughts
+oos（out of scope）的意图 召回竟然很高
+
 
 [Enhancing the generalization for Intent Classification and Out-of-Domain Detection in SLU](https://aclanthology.org/2021.acl-long.190.pdf)
 
@@ -15,6 +35,8 @@ ACL2021 long paper 阅读笔记
 [A Semi-supervised Multi-task Learning Approach to Classify Customer Contact Intents](https://aclanthology.org/2021.ecnlp-1.7.pdf)
 
 [Semi-supervised Meta-learning for Cross-domain Few-shot Intent Classification](https://aclanthology.org/2021.metanlp-1.8.pdf)
+
+
 
 ## ER
 [Modularized Interaction Network for Named Entity Recognition](https://aclanthology.org/2021.acl-long.17.pdf)
