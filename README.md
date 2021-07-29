@@ -4,7 +4,7 @@ ACL2021 & NAACL2021 paper 阅读笔记
 持续更新
 [TOC]
 
-## intent detect
+## SLU
 
 GL-GIN: Fast and Accurate Non-Autoregressive Model for Joint Multiple Intent Detection and Slot Filling [[paper](https://aclanthology.org/2021.acl-long.15.pdf)][[code](https://github.com/yizhen20133868/GL-GIN)]
 
@@ -13,8 +13,9 @@ GL-GIN: Fast and Accurate Non-Autoregressive Model for Joint Multiple Intent Det
 * method
 提出全局局部图形交互网络（GL-GIN），其中主要的组成部分有local slot-aware graph interaction layer和global intent- slot graph interaction layer，前者学习槽之间的关系，后者学习意图和槽的交互关系
 ![]("fig/GL-GIN.jpg")
-* conclusion
+* conclusion & thoughts
 GL-GIN与论文中的baseline比较，可以达到SOTA的效果，且推理速度快了11倍
+快速推理的联合的意图分类+抽槽模型
 
 
 Supervised Neural Clustering via Latent Structured Output Learning: Application to Question Intents [[paper](https://aclanthology.org/2021.naacl-main.263.pdf)][code]
@@ -26,7 +27,17 @@ Supervised Neural Clustering via Latent Structured Output Learning: Application 
 oos（out of scope）的意图 召回竟然很高
 
 
-[Enhancing the generalization for Intent Classification and Out-of-Domain Detection in SLU](https://aclanthology.org/2021.acl-long.190.pdf)
+Enhancing the generalization for Intent Classification and Out-of-Domain Detection in SLU [[paper](https://aclanthology.org/2021.acl-long.190.pdf)][code]
+* problem
+提出一个DRM（domain-regularized module），可以只用in-domain的数据训练 in-domain的intent分类模型和out-of-domain（ood）检测模型。
+* method
+DRM的loss function由两部分组成，领域分类logits（fd）和分类logits（fc），根据论文描述，推理隐含着假设IND和OOD几乎不重合，于是loss function
+$$f = f_{c}/f_{d}$$
+* conclusion & thoughts
+一言概括，将领域拒识模型和意图分类模型统一，并且只用领域内数据训练。
+这个方法可以同时增强两模型的泛化能力，但重点是检测ood/ind。
+DRM可以代替最后一层linear，所以可以灵活用于神经网络模型
+个人感觉，适合只有单个领域数据时，做冷启动
 
 [Out-of-Scope Intent Detection with Self-Supervision and Discriminative Training](https://aclanthology.org/2021.acl-long.273.pdf)
 
@@ -62,8 +73,7 @@ oos（out of scope）的意图 召回竟然很高
 
 [Meta-KD: A Meta Knowledge Distillation Framework for Language Model Compression across Domains](https://aclanthology.org/2021.acl-long.236.pdf)
 
-[Matching Distributions between Model and Data: Cross-domain Knowledge Distillation for Unsupervised Domain Adaptation
-](https://aclanthology.org/2021.acl-long.421.pdf)
+[Matching Distributions between Model and Data: Cross-domain Knowledge Distillation for Unsupervised Domain Adaptation](https://aclanthology.org/2021.acl-long.421.pdf)
 
 ## pre-trained LM
 [BoB: BERT Over BERT for Training Persona-based Dialogue Models from Limited Personalized Data](https://aclanthology.org/2021.acl-long.14.pdf)
