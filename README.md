@@ -9,37 +9,75 @@ ACL2021 & NAACL2021 paper 阅读笔记
 GL-GIN: Fast and Accurate Non-Autoregressive Model for Joint Multiple Intent Detection and Slot Filling [[paper](https://aclanthology.org/2021.acl-long.15.pdf)][[code](https://github.com/yizhen20133868/GL-GIN)]
 
 * problem
+
 用非自回归模型（self attention、GAT等）加速意图识别和抽槽的推理速度
+
 * method
+
 提出全局局部图形交互网络（GL-GIN），其中主要的组成部分有local slot-aware graph interaction layer和global intent- slot graph interaction layer，前者学习槽之间的关系，后者学习意图和槽的交互关系
 ![]("fig/GL-GIN.jpg")
+
 * conclusion & thoughts
+
 GL-GIN与论文中的baseline比较，可以达到SOTA的效果，且推理速度快了11倍
-快速推理的联合的意图分类+抽槽模型
+**快速推理的联合的意图分类+抽槽模型**
 
 
 Supervised Neural Clustering via Latent Structured Output Learning: Application to Question Intents [[paper](https://aclanthology.org/2021.naacl-main.263.pdf)][code]
 * problem
+
 自动识别意图
+
 * method
+
 聚类+结构化 优化方程
+
 * conclusion & thoughts
+
 oos（out of scope）的意图 召回竟然很高
+结构化聚类，多领域可以放在一起做，**泛化性很高**
+个人感觉，适合闲聊QA
 
 
 Enhancing the generalization for Intent Classification and Out-of-Domain Detection in SLU [[paper](https://aclanthology.org/2021.acl-long.190.pdf)][code]
 * problem
+
 提出一个DRM（domain-regularized module），可以只用in-domain的数据训练 in-domain的intent分类模型和out-of-domain（ood）检测模型。
+
 * method
+
 DRM的loss function由两部分组成，领域分类logits（fd）和分类logits（fc），根据论文描述，推理隐含着假设IND和OOD几乎不重合，于是loss function
 $$f = f_{c}/f_{d}$$
+
 * conclusion & thoughts
+
 一言概括，将领域拒识模型和意图分类模型统一，并且只用领域内数据训练。
 这个方法可以同时增强两模型的泛化能力，但重点是检测ood/ind。
 DRM可以代替最后一层linear，所以可以灵活用于神经网络模型
-个人感觉，适合只有单个领域数据时，做冷启动
+个人感觉，**适合只有单个领域数据时，做冷启动**，减少其他领域的干扰
 
-[Out-of-Scope Intent Detection with Self-Supervision and Discriminative Training](https://aclanthology.org/2021.acl-long.273.pdf)
+Out-of-Scope Intent Detection with Self-Supervision and Discriminative Training [[paper](https://aclanthology.org/2021.acl-long.273.pdf)] [[code](https://github.com/liam0949/DCLOOS)]
+
+
+* problem
+
+任务型对话系统中，out-of-scope的意图识别问题
+
+* method
+
+先生成伪out-of-scope（outliers）数据：
+1. 对inliners进行变换
+2. 从open domain的文本中sample
+
+training阶段利用伪数据，训练discriminator来识别out-of-scope，提升泛化能力。testing阶段，用真实out-of-scope来训练。
+
+* conclusion & thoughts
+
+适用于对话系统中已有定义好的intents，如何把未知的intents（outliers）识别出来。
+
+个人感觉，是把常规操作写成了论文，没有大的突破。
+
+
 
 [Intent Classification and Slot Filling for Privacy Policies](https://aclanthology.org/2021.acl-long.340.pdf)
 
