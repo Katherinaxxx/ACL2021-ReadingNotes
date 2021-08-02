@@ -22,8 +22,9 @@ ACL2021 & NAACL2021 paper 阅读笔记
 GL-GIN与论文中的baseline比较，可以达到SOTA的效果，且推理速度快了11倍
 **快速推理的联合的意图分类+抽槽模型**
 
+---
 
-Supervised Neural Clustering via Latent Structured Output Learning: Application to Question Intents [[paper](https://aclanthology.org/2021.naacl-main.263.pdf)][code]
+### Supervised Neural Clustering via Latent Structured Output Learning: Application to Question Intents [[paper](https://aclanthology.org/2021.naacl-main.263.pdf)][code]
 * problem
 
 自动识别意图
@@ -38,8 +39,9 @@ oos（out of scope）的意图 召回竟然很高
 结构化聚类，多领域可以放在一起做，**泛化性很高**
 个人感觉，适合闲聊QA
 
+---
 
-Enhancing the generalization for Intent Classification and Out-of-Domain Detection in SLU [[paper](https://aclanthology.org/2021.acl-long.190.pdf)][code]
+### Enhancing the generalization for Intent Classification and Out-of-Domain Detection in SLU [[paper](https://aclanthology.org/2021.acl-long.190.pdf)][code]
 * problem
 
 提出一个DRM（domain-regularized module），可以只用in-domain的数据训练 in-domain的intent分类模型和out-of-domain（ood）检测模型。
@@ -56,7 +58,9 @@ $$f = f_{c}/f_{d}$$
 DRM可以代替最后一层linear，所以可以灵活用于神经网络模型
 个人感觉，**适合只有单个领域数据时，做冷启动**，减少其他领域的干扰
 
-Out-of-Scope Intent Detection with Self-Supervision and Discriminative Training [[paper](https://aclanthology.org/2021.acl-long.273.pdf)] [[code](https://github.com/liam0949/DCLOOS)]
+---
+
+### Out-of-Scope Intent Detection with Self-Supervision and Discriminative Training [[paper](https://aclanthology.org/2021.acl-long.273.pdf)] [[code](https://github.com/liam0949/DCLOOS)]
 
 
 * problem
@@ -77,7 +81,7 @@ training阶段利用伪数据，训练discriminator来识别out-of-scope，提�
 
 个人感觉，是把常规操作写成了论文，没有大的突破。
 
-
+---
 
 [Intent Classification and Slot Filling for Privacy Policies](https://aclanthology.org/2021.acl-long.340.pdf)
 
