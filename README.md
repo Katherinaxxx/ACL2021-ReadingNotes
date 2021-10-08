@@ -1,5 +1,5 @@
 # ReadingNotes
-ACL2021 & NAACL2021 paper 阅读笔记
+ACL2021 paper 阅读笔记
 
 持续更新
 [TOC]
