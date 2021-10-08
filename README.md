@@ -187,6 +187,23 @@ training阶段利用伪数据，训练discriminator来识别out-of-scope，提�
 ## QA
 
 ### UnitedQA: A Hybrid Approach for Open Domain Question Answering [[paper](https://aclanthology.org/2021.acl-long.240.pdf)]
+
+* motivation
+
+现有open-QA的研究方法要么专注提升检索要么专注提升生成，本文提出一种能同时提升这两个方面的方法。
+
+* method
+
+主要包括三个模块：
+1）retrieval根据qury检索出相关的篇章。检索方法：BM25【篇章处理成BOW，按照词的出现频率进行检索】、DPR（dense passage retrieval）【用bert生成passage和qury的vectors，两者乘积作为相关性得分】
+2）hybrid readers根据相关篇章生成候选回答。generative reader是一个seq2seq的模型（T5）。extractive reader是一个transformer-based模型（electra）用于得到answer spans的概率/可能性/得分。并且对这两个reader都做了提升，细节见论文。
+3）re-ranking模块通过线性插值合并候选并给出最终答案
+
+* thoughts
+
+做的优化和涉及的方法确实是很多。相比baseline提升明显，不过计算效率是之前的3倍，有待提升。
+
+
 ---
 ## Text Classification
 
@@ -196,7 +213,7 @@ training阶段利用伪数据，训练discriminator来识别out-of-scope，提�
 
 ---
 
-## sentiment
+## sentiment/emotion detection
 
 ### DCR-Net: A Deep Co-Interactive Relation Network for Joint Dialog Act Recognition and Sentiment Classification [[paper](https://arxiv.org/pdf/2008.06914.pdf)]
 
@@ -213,11 +230,23 @@ training阶段利用伪数据，训练discriminator来识别out-of-scope，提�
 这方法思路很明白，其中的组件也都是别人提出的，效果上是有提升。
 感觉可以用在意图识别+身份识别的交互上。
 
-Directed Acyclic Graph Network for Conversational Emotion Recognition [[paper](https://aclanthology.org/2021.acl-long.123/)]
+### Directed Acyclic Graph Network for Conversational Emotion Recognition [[paper](https://aclanthology.org/2021.acl-long.123/)][[code](https://github.com/shenwzh3/DAG-ERC)]
+
+* motivation
+
+把有向无环图引入情感识别的任务，能够更好的对对话建模。仅仅graph-based的方法或rnn-based的方法都有其缺点，前者缺少远处信息和序列信息，后者倾向于紧邻的信息，因此，将有向无环图与rnn-based深度学习网络相结合，也可以提升对对话建模的效果。
+
+相比GCN、GAT，DAG
+
+
+* thoughts
+
+这个方法适合多人对话的情况，像客服助理这种1v1的，DAG恐怕没有太大的提升。
+
 
 Topic-Driven and Knowledge-Aware Transformer for Dialogue Emotion Detection [[paper](https://aclanthology.org/2021.acl-long.125/)]
 
-Towards Emotional Support Dialog Systems [[paper](https://aclanthology.org/2021.acl-long.269/)]
+Towards Emotional Support Dialog Systems [[paper](https://aclanthology.org/2021.acl-long.269/)]这篇的领域有点偏冷门了
 
 ### DialogueCRN: Contextual Reasoning Networks for Emotion Recognition in Conversations [[paper](https://aclanthology.org/2021.acl-long.547/)][[code](https://github.com/zerohd4869/DialogueCRN)]
 
