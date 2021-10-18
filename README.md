@@ -144,6 +144,8 @@ training阶段利用伪数据，训练discriminator来识别out-of-scope，提�
 这个工具目前包含6个人工标注的数据集，和19个模型。目测基本的东西像数据处理、模型、评价都已经封装好了。
 这个工具可以快速搭一个模型也可以利用这个工具定义自己的模型，只需要继承封装的类。
 
+### HieRec: Hierarchical User Interest Modeling for Personalized News Recommendation[[paper](https://aclanthology.org/2021.acl-long.423/)]
+
 ---
 
 ### IFlyEA: A Chinese Essay Assessment System with Automated Rating, Review Generation, and Recommendation [[paper](https://aclanthology.org/2021.acl-demo.29.pdf)]
@@ -210,6 +212,24 @@ training阶段利用伪数据，训练discriminator来识别out-of-scope，提�
 ### Hierarchy-aware Label Semantics Matching Network for Hierarchical Text Classiﬁcation [[paper](https://aclanthology.org/2021.acl-long.337.pdf)]
 
 * 本文提出了融合输入文本和标签文本语义相似度的层次化分类模型HiMatch, 在RCV1-V2,WOS和EURLEX-57K上达到SOTA表现
+
+### Concept-Based Label Embedding via Dynamic Routing for Hierarchical Text Classification [[paper](https://aclanthology.org/2021.acl-long.388/)]
+
+### Using Hierarchical Class Structure to Improve Fine-Grained Claim Classification [[paper](https://aclanthology.org/2021.spnlp-1.6/)][[code](https://mardy-spp.github.io/)]
+
+* motivation
+
+自动索赔分类的一大难点就是，存在很多低频子类。因此提出用层次分类来着重提升低频子类的分类效果。
+
+* method
+
+1. **Hierarchical Label Encoding** (HLE, Shimaoka et al. (2017a)) introduces “soft” constraints through parameter sharing between classes in the classifier.
+对label进行编码得到矩阵S，左乘权重矩阵，再与最终的hidden相乘取sigmoid得到得分：
+ p(y = 1) = sigm(h(WS))
+2. **整数线性规划The second one, Integer Linear Programming** (ILP, e.g., Punyakanok et al. (2004)) introduces “hard” constraints in a post-processing step.
+用于根据分类器的probs选择最有可能的output
+
+* conclusion & thoughts
 
 ---
 
