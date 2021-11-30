@@ -205,6 +205,15 @@ training阶段利用伪数据，训练discriminator来识别out-of-scope，提�
 
 做的优化和涉及的方法确实是很多。相比baseline提升明显，不过计算效率是之前的3倍，有待提升。
 
+### Multi-task Retrieval for Knowledge-Intensive Tasks
+
+* 检索
+tfidf、 BM25
+DPR：Q、A计算相似度
+![dpr](fig/DPR.png)
+![multitask](fig/multitask.png)
+
+* method
 
 ---
 ## Text Classification
@@ -263,8 +272,9 @@ training阶段利用伪数据，训练discriminator来识别out-of-scope，提�
 
 这个方法适合多人对话的情况，像客服助理这种1v1的，DAG恐怕没有太大的提升。
 
+---
 
-Topic-Driven and Knowledge-Aware Transformer for Dialogue Emotion Detection [[paper](https://aclanthology.org/2021.acl-long.125/)]
+### Topic-Driven and Knowledge-Aware Transformer for Dialogue Emotion Detection [[paper](https://aclanthology.org/2021.acl-long.125/)]
 
 Towards Emotional Support Dialog Systems [[paper](https://aclanthology.org/2021.acl-long.269/)]这篇的领域有点偏冷门了
 
@@ -285,6 +295,52 @@ Towards Emotional Support Dialog Systems [[paper](https://aclanthology.org/2021.
  * thoughts
 
  从实验就过上看，相比其他方法提升明显。仔细一想，常用的手段都变成模拟xx理论，确实是说的很有道理的样子，厉害。
+
+### MTAG: Modal-Temporal Attention Graph for Unaligned Human Multimodal Language Sequences （这篇还不错的样子，三种融合，较新）[[code](https://github.com/jedyang97/MTAG)]
+
+* motivation
+
+情感表达是文本、语音、图像三者融合的，在建模时也应尽量这样！
+![mtag](fig/MTAG-visualization.png)
+
+关于这三者结合的多模态研究是比较少的，大多是两种。
+
+* method
+
+step1.把未对齐的多模态数据，**转化**为图。
+
+1. 节点的构建：经过FNN把不同模态的embedding转化成相同size，在加上position embedding。这就形成了一个节点$v_i$,每个节点还有一个指示$\pi \in (Audio, Video, Text) $。
+2. 边的构建：
+
+不同模态之间的交互是不同的，且时间顺序很重要。本文通过给边设置不同类型，使得不同类型的边在融合时处理方式不同，从而对不同模态的交互能区别处理。边表示为$e_{ij}$。
+
+* 多模态的边（modality edge）。$\phi_{ij}=(\pi_i \to \pi_j)$
+* temporal edge。经过pseudo-alignment将不同模态对齐，得到时间标签 $t \in (past,present,future)$
+  * pseudo-alignment
+
+![mtag](fig/MTAG-align.png)
+
+step2.融合和剪枝。
+用提出的的图融合操作，称为**MTAG融合**，以及动态修剪和读出技术（dynamic pruning and read-out），处理图。
+1. MTAG融合
+![mtag-fusionA](fig/MTAG-fusionA.png)
+![mtag-fusionV](fig/MTAG-fusionV.png)
+
+
+![mtag](fig/MTAG.png)
+
+* thoughts
+
+
+### Hybrid Attention based Multimodal Network for Spoken Language Classification （文本+语音）
+
+* method
+
+本文的方法还算中规中矩，没有详细看，就看了方法图
+![sen-text](fig/sentiment-text-feature.png)
+![sen-audio](fig/sentiment-audio-feature.png)
+![sen-model](fig/sentiment-lstm.png)
+![sen-modality](fig/sentiment-modality-fusion.png)
 
 ---
 
