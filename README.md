@@ -467,7 +467,7 @@ UDA领域中，首个引入梯度信息。
 
  ---
 
-## dialogue generation
+## dialogue
 
 ### BoB: BERT Over BERT for Training Persona-based Dialogue Models from Limited Personalized Data [[paper](https://aclanthology.org/2021.acl-long.14.pdf)]
 
@@ -480,6 +480,35 @@ UDA领域中，首个引入梯度信息。
 提出BoB模型（BERT-overt-BERT）来解决这个问题，将个性化对话生成划分成两个子任务，用到的数据是有限的个性对话数据和。
 模型包含1个bert encoder和2个bert decoder，其中一个decoder用于生成回复，另一个decoder用于一致性理解
 
+---
+
+### Can I Be of Further Assistance? Using Unstructured Knowledge Access to Improve Task-oriented Conversational Modeling [[paper](https://aclanthology.org/2021.dialdoc-1.16.pdf)]
+
+* motivation
+
+提出一种pipeline的方法，当api不能cover住问题的时候，使用一些外部非结构化的数据，**增强找到最相关问题的能力**，从而使得任务型机器人能回答这些问题。
+
+这个方法集合了以下几点：1）数据增强；2）领域分类和实体链接（domain and entity identification）；3）混合负采样（mixed negative sampling）
+
+* method
+
+![pipeline](fig/dialogue-pipeline.png)
+
+pipeline：
+(1) knowledge seeking turn detection，二分类，走“api路线”还是走“需要额外知识路线”
+
+(2) knowledge selection,包括三个模块，领域分类、实体追踪、知识匹配
+
+实体追踪：检测对话背景中提到的实体，并将其与知识库中的实体级候选者对齐；
+
+知识匹配：将对话背景，领域/实体名称和每个知识段concat成一个长序列，然后将其喂到微调roberta大型模型以获得相关性分数
+
+(3) knowledge-grounded response generation【这是前人提出来的，本文在这个pipeline上进行改进】
+
+* thoughts
+
+这类利用外部信息的pipeline方法确实能够多cover一些，思路是挺有逻辑的，其中各个模块的方法比较直观，实现起来简单，实用性比较高。
+ 
 ---
 
 ## RE
