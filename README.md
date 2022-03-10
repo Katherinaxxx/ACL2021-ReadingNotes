@@ -4,6 +4,26 @@ ACL2021 paper 阅读笔记
 持续更新
 [TOC]
 
+## KG
+
+### Poisoning Knowledge Graph Embeddings via Relation Inference Patterns [[paper](https://aclanthology.org/2021.acl-long.147/)]
+
+### PairRE: Knowledge Graph Embeddings via Paired Relation Vectors [[paper](https://aclanthology.org/2021.acl-long.336/)]
+
+### Employing Argumentation Knowledge Graphs for Neural Argument Generation [[paper](https://aclanthology.org/2021.acl-long.366/)]
+
+### Search from History and Reason for Future: Two-stage Reasoning on Temporal Knowledge Graphs [[paper](https://aclanthology.org/2021.acl-long.365/)]
+
+### Unified Interpretation of Softmax Cross-Entropy and Negative Sampling: With Case Study for Knowledge Graph Embedding [[paper](https://aclanthology.org/2021.acl-long.429/)]
+
+### Question Answering Over Temporal Knowledge Graphs [[paper](https://aclanthology.org/2021.acl-long.520/)]
+
+### Are Missing Links Predictable? An Inferential Benchmark for Knowledge Graph Completion [[paper](https://aclanthology.org/2021.acl-long.534/)]
+
+### KnowGraph@IITK at SemEval-2021 Task 11: Building Knowledge Graph for NLP Research [[paper](https://aclanthology.org/2021.semeval-1.57/)]
+
+
+
 ## SLU
 
 ### GL-GIN: Fast and Accurate Non-Autoregressive Model for Joint Multiple Intent Detection and Slot Filling [[paper](https://aclanthology.org/2021.acl-long.15.pdf)][[code](https://github.com/yizhen20133868/GL-GIN)]
@@ -148,7 +168,7 @@ training阶段利用伪数据，训练discriminator来识别out-of-scope，提�
 
 ---
 
-### IFlyEA: A Chinese Essay Assessment System with Automated Rating, Review Generation, and Recommendation [[paper](https://aclanthology.org/2021.acl-demo.29.pdf)]
+### IFlyEA: A Chinese Essay Assessment System with Automated Rating, Review Generation, and Recommendation  [[paper](https://aclanthology.org/2021.acl-demo.29.pdf)] (多维度多特征语文评阅系统简介)
 
 * motivation
 
@@ -508,7 +528,7 @@ pipeline：
 * thoughts
 
 这类利用外部信息的pipeline方法确实能够多cover一些，思路是挺有逻辑的，其中各个模块的方法比较直观，实现起来简单，实用性比较高。
- 
+
 ---
 
 ## RE
